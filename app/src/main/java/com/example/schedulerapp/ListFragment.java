@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ListFragment  extends Fragment {
 
-    private CourseDatabase mCourseDb;
+    private CourseDatabase mCourseDb = CourseDatabase.getInstance();
     private RecyclerView mRecyclerView;
 
     @Override
