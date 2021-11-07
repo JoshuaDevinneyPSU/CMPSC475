@@ -2,14 +2,16 @@ package com.example.schedulerapp;
 
 public class Course {
     private int mId;
+    private int mDay;
     private String mName;
     private String mProf;
     private int mStart;
     private int mEnd;
     private String mLocation;
 
-    public Course(int mId, String mName, String mProf, int mStart, int mEnd, String mLocation) {
+    public Course(int mId, int mDay, String mName, String mProf, int mStart, int mEnd, String mLocation) {
         this.mId = mId;
+        this.mDay = mDay;
         this.mName = mName;
         this.mProf = mProf;
         this.mStart = mStart;
@@ -23,6 +25,14 @@ public class Course {
 
     public void setmId(int mId) {
         this.mId = mId;
+    }
+
+    public int getmDay() {
+        return mDay;
+    }
+
+    public void setmDay(int mDay) {
+        this.mDay = mDay;
     }
 
     public String getmName() {

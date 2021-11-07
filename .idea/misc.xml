@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/list_item_class.xml" value="0.1" />
+        <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/fragment_list.xml" value="0.67" />
+        <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/list_item_class.xml" value="0.33" />
       </map>
     </option>
   </component>

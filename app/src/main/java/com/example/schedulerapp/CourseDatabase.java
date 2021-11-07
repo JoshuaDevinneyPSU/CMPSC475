@@ -34,6 +34,10 @@ public class CourseDatabase {
         weekday = new Weekday(5, "Friday");
         addWeekday(weekday);
 
+        Course course = new Course(1, 1, "CMPSC 475", "Dr. Xiao", 3, 4, "Burke 180");
+        addCourse(course);
+        course = new Course(1, 2, "GEOG 101", "Dr. Naber", 5, 6, "Nick 130");
+        addCourse(course);
 
     }
 
@@ -41,5 +45,16 @@ public class CourseDatabase {
         mWeek.add(weekday);
         List<Course> courseList = new ArrayList<>();
         mCourses.put(weekday.getmId(), courseList);
+    }
+
+    public void addCourse(Course course) {
+        List<Course> courseList = mCourses.get(course.getmDay());
+        if(courseList != null) {
+            courseList.add(course);
+        }
+    }
+
+    public List<Course> getCourses(int weekday) {
+        return mCourses.get(weekday);
     }
 }
