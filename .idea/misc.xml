@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/activity_main.xml" value="0.20885416666666667" />
         <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/fragment_detail.xml" value="0.20885416666666667" />
-        <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/fragment_list.xml" value="0.67" />
+        <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/fragment_list.xml" value="0.33" />
         <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/layout/list_item_class.xml" value="0.33" />
+        <entry key="..\:/Users/JDCSC/AndroidStudioProjects/CMPSC465/app/src/main/res/menu/day_menu.xml" value="0.33" />
       </map>
     </option>
   </component>
