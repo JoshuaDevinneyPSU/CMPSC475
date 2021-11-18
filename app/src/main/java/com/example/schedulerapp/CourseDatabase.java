@@ -34,9 +34,9 @@ public class CourseDatabase {
         weekday = new Weekday(5, "Friday");
         addWeekday(weekday);
 
-        Course course = new Course(1, 1, "CMPSC 475", "Dr. Xiao", 3, 4, "Burke 180");
+        Course course = new Course(1, 1, "CMPSC 475", "Dr. Xiao", "3:00pm", "4:00pm", "Burke 180");
         addCourse(course);
-        course = new Course(1, 2, "GEOG 101", "Dr. Naber", 5, 6, "Nick 130");
+        course = new Course(1, 2, "GEOG 101", "Dr. Naber", "5:00pm", "6:00pm", "Nick 130");
         addCourse(course);
 
     }

@@ -5,11 +5,11 @@ public class Course {
     private int mDay;
     private String mName;
     private String mProf;
-    private int mStart;
-    private int mEnd;
+    private String mStart;
+    private String mEnd;
     private String mLocation;
 
-    public Course(int mId, int mDay, String mName, String mProf, int mStart, int mEnd, String mLocation) {
+    public Course(int mId, int mDay, String mName, String mProf, String mStart, String mEnd, String mLocation) {
         this.mId = mId;
         this.mDay = mDay;
         this.mName = mName;
@@ -51,19 +51,19 @@ public class Course {
         this.mProf = mProf;
     }
 
-    public int getmStart() {
+    public String getmStart() {
         return mStart;
     }
 
-    public void setmStart(int mStart) {
+    public void setmStart(String mStart) {
         this.mStart = mStart;
     }
 
-    public int getmEnd() {
+    public String getmEnd() {
         return mEnd;
     }
 
-    public void setmEnd(int mEnd) {
+    public void setmEnd(String mEnd) {
         this.mEnd = mEnd;
     }
 
