@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class ListFragment  extends Fragment {
         View.OnClickListener onClickListener = itemView -> {
           int selectedCourseId = (int) itemView.getTag();
           Bundle args = new Bundle();
-          //args.putInt(DetailFragment.ARG_COURSE_ID, selectedCourseId);
-          //Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args);
+          args.putInt(DetailFragment.ARG_COURSE_ID, selectedCourseId);
+          Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args);
         };
 
         mRecyclerView = rootView.findViewById(R.id.course_list);
@@ -68,14 +69,23 @@ public class ListFragment  extends Fragment {
 
     private static class CourseHolder extends RecyclerView.ViewHolder {
         private final TextView mNameTextView;
+        private final TextView mProfTextView;
+        private final TextView mTimeTextView;
+        private final TextView mLocTextView;
 
         public CourseHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_class, parent, false));
             mNameTextView = itemView.findViewById(R.id.course_name);
+            mProfTextView = itemView.findViewById(R.id.prof_name);
+            mTimeTextView = itemView.findViewById(R.id.time_range);
+            mLocTextView = itemView.findViewById(R.id.location);
         }
 
         public void bind(Course course) {
             mNameTextView.setText(course.getmName());
+            mProfTextView.setText(course.getmProf());
+            mTimeTextView.setText(course.getmStart() + " - " + course.getmEnd());
+            mLocTextView.setText(course.getmLocation());
         }
     }
 }
