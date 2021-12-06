@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements CourseDialogFragm
     @Override
     public void onCourseEntered(String courseText, String profText, String startText, String endText, String locText) {
         if(courseText.length() > 0 && profText.length() > 0 && startText.length() > 0 && endText.length() > 0 && locText.length() > 0) {
-            Course course = new Course(2, 1, courseText, profText, startText, endText, locText);
+            Course course = new Course(mCourseDb.requestID(), 1, courseText, profText, startText, endText, locText);
             mCourseDb.addCourse(course);
         }
     }
