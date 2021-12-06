@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/listFragment">
 
@@ -11,5 +12,15 @@
         <action
             android:id="@+id/show_item_detail"
             app:destination="@+id/detailFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.schedulerapp.DetailFragment"
+        android:label="details"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="ARG_COURSE_ID"
+            android:defaultValue="1"
+            app:argType="integer"/>
     </fragment>
 </navigation>

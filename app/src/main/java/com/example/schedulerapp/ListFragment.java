@@ -29,7 +29,7 @@ public class ListFragment extends Fragment {
         View.OnClickListener onClickListener = itemView -> {
           int selectedCourseId = (int) itemView.getTag();
           Bundle args = new Bundle();
-          args.putInt(DetailFragment.ARG_COURSE_ID, selectedCourseId);
+          args.putInt(String.valueOf(DetailFragment.ARG_COURSE_ID), selectedCourseId);
           Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args);
         };
 
