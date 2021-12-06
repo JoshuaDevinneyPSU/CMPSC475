@@ -1,5 +1,5 @@
 # CMPSC 475 – Application Programming Project Proposal 
-## Joshua Devinney   
+## **Joshua Devinney **  
 ### Project Title Narrative 
 ### Schedule Builder and Tracker 
 ## The Problem 
