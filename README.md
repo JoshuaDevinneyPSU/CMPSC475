@@ -39,3 +39,7 @@ Uses
 4.	This allows the user to view a map view of each day of the week to locate their classes 
 5.	The classes will be pinned on the map view to allow the user to easily recognize where the class is taking place 
 6.	The user will be allowed to delete or remove a class from their schedule. 
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
