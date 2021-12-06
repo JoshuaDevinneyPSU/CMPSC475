@@ -20,7 +20,7 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="ARG_COURSE_ID"
-            android:defaultValue="1"
+            android:defaultValue="0"
             app:argType="integer"/>
     </fragment>
 </navigation>

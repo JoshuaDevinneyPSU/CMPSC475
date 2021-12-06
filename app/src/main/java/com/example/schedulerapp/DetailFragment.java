@@ -1,11 +1,14 @@
 package com.example.schedulerapp;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 
 public class DetailFragment extends Fragment {
 
-    public static int ARG_COURSE_ID;
+    public static String ARG_COURSE_ID = "course_id";
     private Course mCourse;
 
     public DetailFragment() {
@@ -23,10 +26,8 @@ public class DetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ARG_COURSE_ID = 1;
-
-        mCourse = CourseDatabase.getInstance().getCourses(1).get(ARG_COURSE_ID-1);
+        Bundle args = getArguments();
+        mCourse = CourseDatabase.getInstance().getCourses(1).get(args.getInt(ARG_COURSE_ID)-1);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class DetailFragment extends Fragment {
             profTextView.setText(mCourse.getmProf());
 
             TextView timeTextView = rootView.findViewById(R.id.time_range);
-            timeTextView.setText(mCourse.getmStart() + "-" + mCourse.getmEnd());
+            timeTextView.setText(mCourse.getmStart() + " - " + mCourse.getmEnd());
 
             TextView locTextView = rootView.findViewById(R.id.location);
             locTextView.setText(mCourse.getmLocation());

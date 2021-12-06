@@ -55,7 +55,7 @@ public class CourseDatabase {
     }
 
     public int requestID() {
-        return mCourses.size();
+        return mCourses.get(1).size()+1;
     }
 
     public List<Course> getCourses(int weekday) {

@@ -1,6 +1,9 @@
 package com.example.schedulerapp;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -28,6 +32,7 @@ public class ListFragment extends Fragment {
 
         View.OnClickListener onClickListener = itemView -> {
           int selectedCourseId = (int) itemView.getTag();
+            Log.d(TAG, "onCreateView: " + itemView.getTag());
           Bundle args = new Bundle();
           args.putInt(String.valueOf(DetailFragment.ARG_COURSE_ID), selectedCourseId);
           Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args);
@@ -36,6 +41,10 @@ public class ListFragment extends Fragment {
         mRecyclerView = rootView.findViewById(R.id.course_list);
         List<Course> courses = mCourseDb.getCourses(1);
         mRecyclerView.setAdapter(new CourseAdapter(courses, onClickListener));
+
+        DividerItemDecoration divider = new DividerItemDecoration(mRecyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+        mRecyclerView.addItemDecoration(divider);
 
         return rootView;
     }
