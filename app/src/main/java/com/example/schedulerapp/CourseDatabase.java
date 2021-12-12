@@ -39,6 +39,15 @@ public class CourseDatabase {
 
     }
 
+    public Weekday getWeekday(int weekId){
+        for(Weekday weekday: mWeek){
+            if(weekday.getmId() == weekId){
+                return weekday;
+            }
+        }
+        return null;
+    }
+
     private void addWeekday(Weekday weekday) {
         mWeek.add(weekday);
         List<Course> courseList = new ArrayList<>();

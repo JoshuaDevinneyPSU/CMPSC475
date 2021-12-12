@@ -35,6 +35,7 @@ public class DetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
         if(mCourse != null){
+
             TextView nameTextView = rootView.findViewById(R.id.course_name);
             nameTextView.setText(mCourse.getmName());
 

@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">SchedulerApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="previous">previous</string>
     <string name="next">next</string>
     <string name="course">Enter Course Info:</string>
     <string name="create">Create</string>
     <string name="cancel">Cancel</string>
+    <string name="Course_details">Course Details</string>
 </resources>
