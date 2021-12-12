@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ import java.util.List;
 public class ListFragment extends Fragment {
 
     private CourseDatabase mCourseDb = CourseDatabase.getInstance();
-    private RecyclerView mRecyclerView;
+    public static RecyclerView mRecyclerView;
+    public static int mWeekDay = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -39,7 +41,7 @@ public class ListFragment extends Fragment {
         };
 
         mRecyclerView = rootView.findViewById(R.id.course_list);
-        List<Course> courses = mCourseDb.getCourses(1);
+        List<Course> courses = mCourseDb.getCourses(mWeekDay);
         mRecyclerView.setAdapter(new CourseAdapter(courses, onClickListener));
 
         DividerItemDecoration divider = new DividerItemDecoration(mRecyclerView.getContext(),
@@ -74,7 +76,10 @@ public class ListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return mCourses.size();
+            if(mCourses != null) {
+                return mCourses.size();
+            }
+            return 0;
         }
     }
 
