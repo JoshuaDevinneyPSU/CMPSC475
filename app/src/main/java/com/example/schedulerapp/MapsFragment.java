@@ -1,9 +1,18 @@
 package com.example.schedulerapp;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +22,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
@@ -31,9 +43,17 @@ public class MapsFragment extends Fragment {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.setMapType(4);
+            LatLng NickBld = new LatLng(42.11972673423577, -79.98750272542806);
+            LatLng BurkeBld = new LatLng(42.11892121674618, -79.9798642820508);
+            LatLng KochelBld = new LatLng(42.120180610165626, -79.98162257755125);
+            LatLng behrend = new LatLng(42.1195, -79.9826);
+            googleMap.addMarker(new MarkerOptions().position(behrend).title("Penn State Behrend"));
+            googleMap.addMarker(new MarkerOptions().position(NickBld).title("Nick"));
+            googleMap.addMarker(new MarkerOptions().position(BurkeBld).title("Burke"));
+            googleMap.addMarker(new MarkerOptions().position(KochelBld).title("Kochel"));
+//            googleMap.moveCamera(CameraUpdateFactory.newLatLng(behrend));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(behrend, 16));
         }
     };
 
@@ -54,4 +74,6 @@ public class MapsFragment extends Fragment {
             mapFragment.getMapAsync(callback);
         }
     }
+
+
 }
