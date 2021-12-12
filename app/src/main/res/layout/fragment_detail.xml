@@ -39,4 +39,11 @@
         tools:text="building">
     </TextView>
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.example.schedulerapp.MapsFragment"
+        tools:layout="@layout/fragment_maps"/>
+
 </LinearLayout>
