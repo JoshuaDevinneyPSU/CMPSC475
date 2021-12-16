@@ -21,6 +21,7 @@ public class DetailFragment extends Fragment {
 
     public static String ARG_COURSE_ID = "course_id";
     private Course mCourse;
+    public static int mCourseID;
 
     public DetailFragment() {
 
@@ -30,7 +31,8 @@ public class DetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
-        mCourse = CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(args.getInt(ARG_COURSE_ID)-1);
+        mCourseID = args.getInt(ARG_COURSE_ID);
+        mCourse = CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1);
     }
 
     @Override

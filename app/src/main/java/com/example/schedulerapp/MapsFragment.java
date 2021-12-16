@@ -2,6 +2,9 @@ package com.example.schedulerapp;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
+import static com.example.schedulerapp.DetailFragment.ARG_COURSE_ID;
+import static com.example.schedulerapp.DetailFragment.mCourseID;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -18,6 +21,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -46,7 +50,7 @@ public class MapsFragment extends Fragment {
         public void onMapReady(GoogleMap googleMap) {
             googleMap.setMapType(4);
             googleMap.setMyLocationEnabled(true);
-            
+
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
             LatLng JunkerBld = new LatLng(42.12034657919094, -79.97780244960862);
             LatLng AmicBld = new LatLng(42.1172027162037, -79.97663030724632);
@@ -55,12 +59,26 @@ public class MapsFragment extends Fragment {
             LatLng BurkeBld = new LatLng(42.11892121674618, -79.9798642820508);
             LatLng KochelBld = new LatLng(42.120180610165626, -79.98162257755125);
             LatLng behrend = new LatLng(42.1195, -79.9826);
-            googleMap.addMarker(new MarkerOptions().position(NickBld).title("Nick"));
-            googleMap.addMarker(new MarkerOptions().position(BurkeBld).title("Burke"));
-            googleMap.addMarker(new MarkerOptions().position(KochelBld).title("Kochel"));
-            googleMap.addMarker(new MarkerOptions().position(JunkerBld).title("Junker"));
-            googleMap.addMarker(new MarkerOptions().position(AmicBld).title("AMIC"));
-            googleMap.addMarker(new MarkerOptions().position(OBSBld).title("OBS"));
+
+            if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("Nick")){
+                googleMap.addMarker(new MarkerOptions().position(NickBld).title("Nick"));
+            }
+            else if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("Burke")){
+                googleMap.addMarker(new MarkerOptions().position(BurkeBld).title("Burke"));
+            }
+            else if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("Kochel")){
+                googleMap.addMarker(new MarkerOptions().position(KochelBld).title("Kochel"));
+            }
+            else if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("Junker")){
+                googleMap.addMarker(new MarkerOptions().position(JunkerBld).title("Junker"));
+            }
+            else if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("AMIC")){
+                googleMap.addMarker(new MarkerOptions().position(AmicBld).title("AMIC"));
+            }
+            else if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("OBS")){
+                googleMap.addMarker(new MarkerOptions().position(OBSBld).title("OBS"));
+            }
+
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(behrend, 16));
         }
     };
