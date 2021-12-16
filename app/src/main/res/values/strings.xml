@@ -1,11 +1,20 @@
 <resources>
-    <string name="app_name">SchedulerApp</string>
+    <string name="app_name">Schedule Builder</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="previous">previous</string>
     <string name="next">next</string>
     <string name="course">Enter Course Info:</string>
     <string name="create">Create</string>
     <string name="cancel">Cancel</string>
-    <string name="Course_details">Course Details</string>
+    <string name="Course_details">Course Tracker</string>
     <string name="google_maps_key">AIzaSyBKlsLuC12I9yG7NqL1madWRQ9q9ugyt_w</string>
+    <string name="email">Email</string>
+    <string name="loginTitle">Welcome to the Schedule Builder and Tracker</string>
+    <string name="password">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="not_registered_yet">Not registered yet</string>
+    <string name="register_here">Register here</string>
+    <string name="register">Register</string>
+    <string name="already_registered">Already registered</string>
+    <string name="login_here">Login here</string>
 </resources>
