@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.location.LocationRequest;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,15 +45,22 @@ public class MapsFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             googleMap.setMapType(4);
+            googleMap.setMyLocationEnabled(true);
+            
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+            LatLng JunkerBld = new LatLng(42.12034657919094, -79.97780244960862);
+            LatLng AmicBld = new LatLng(42.1172027162037, -79.97663030724632);
+            LatLng OBSBld = new LatLng(42.119059255367574, -79.9873613581717);
             LatLng NickBld = new LatLng(42.11972673423577, -79.98750272542806);
             LatLng BurkeBld = new LatLng(42.11892121674618, -79.9798642820508);
             LatLng KochelBld = new LatLng(42.120180610165626, -79.98162257755125);
             LatLng behrend = new LatLng(42.1195, -79.9826);
-            googleMap.addMarker(new MarkerOptions().position(behrend).title("Penn State Behrend"));
             googleMap.addMarker(new MarkerOptions().position(NickBld).title("Nick"));
             googleMap.addMarker(new MarkerOptions().position(BurkeBld).title("Burke"));
             googleMap.addMarker(new MarkerOptions().position(KochelBld).title("Kochel"));
-//            googleMap.moveCamera(CameraUpdateFactory.newLatLng(behrend));
+            googleMap.addMarker(new MarkerOptions().position(JunkerBld).title("Junker"));
+            googleMap.addMarker(new MarkerOptions().position(AmicBld).title("AMIC"));
+            googleMap.addMarker(new MarkerOptions().position(OBSBld).title("OBS"));
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(behrend, 16));
         }
     };
