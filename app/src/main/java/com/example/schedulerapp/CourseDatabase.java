@@ -21,6 +21,7 @@ public class CourseDatabase {
         mWeek = new ArrayList<>();
         mCourses = new HashMap<>();
 
+        //Initialize Weekdays
         Weekday weekday = new Weekday(1, "Monday");
         addWeekday(weekday);
         weekday = new Weekday(2, "Tuesday");
@@ -32,6 +33,7 @@ public class CourseDatabase {
         weekday = new Weekday(5, "Friday");
         addWeekday(weekday);
 
+        //Courses added into database for the Demo
         Course course = new Course(1, 1, "CMPSC 475", "Dr. Xiao", "3:00pm", "4:00pm", "Burke 105");
         addCourse(course);
         course = new Course(2, 1, "CMPSC 461", "Dr. Hoblos", "11:00am", "12:15pm", "Burke 107");
@@ -69,6 +71,7 @@ public class CourseDatabase {
 
     }
 
+    //Return weekday
     public Weekday getWeekday(int weekId){
         for(Weekday weekday: mWeek){
             if(weekday.getmId() == weekId){
@@ -78,12 +81,14 @@ public class CourseDatabase {
         return null;
     }
 
+    //Add weekday (should not be needed)
     private void addWeekday(Weekday weekday) {
         mWeek.add(weekday);
         List<Course> courseList = new ArrayList<>();
         mCourses.put(weekday.getmId(), courseList);
     }
 
+    //Add a course to the week's course list
     public void addCourse(Course course) {
         List<Course> courseList = mCourses.get(course.getmDay());
         if(courseList != null) {
@@ -91,10 +96,12 @@ public class CourseDatabase {
         }
     }
 
+    //Get id of course
     public int requestID() {
         return mCourses.get(1).size()+1;
     }
 
+    //Get list of courses
     public List<Course> getCourses(int weekday) {
         return mCourses.get(weekday);
     }

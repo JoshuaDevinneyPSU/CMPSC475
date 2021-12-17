@@ -27,29 +27,36 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Set view to register activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //Link textViews and buttons
         etRegEmail = findViewById(R.id.etRegEmail);
         etRegPassword = findViewById(R.id.etRegPass);
         tvLoginHere = findViewById(R.id.tvLoginHere);
         btnRegister = findViewById(R.id.btnRegister);
 
+        //Get Firebase instance
         mAuth = FirebaseAuth.getInstance();
 
+        //OnClick for register button
         btnRegister.setOnClickListener(view ->{
             createUser();
         });
 
+        //OnClick for login button
         tvLoginHere.setOnClickListener(view ->{
             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         });
     }
 
     private void createUser(){
+        //Get email and password
         String email = etRegEmail.getText().toString();
         String password = etRegPassword.getText().toString();
 
+        //Check that fields arent empty
         if (TextUtils.isEmpty(email)){
             etRegEmail.setError("Email cannot be empty");
             etRegEmail.requestFocus();
@@ -57,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
             etRegPassword.setError("Password cannot be empty");
             etRegPassword.requestFocus();
         }else{
+            //Authenticate user
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

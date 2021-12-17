@@ -2,6 +2,7 @@ package com.example.schedulerapp;
 
 import static com.example.schedulerapp.DetailFragment.mCourseID;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +32,15 @@ public class MapsFragment extends Fragment {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
+        @SuppressLint("MissingPermission")
         @Override
         public void onMapReady(GoogleMap googleMap) {
+            //Set map to hybrid view and enable gps location
             googleMap.setMapType(4);
             googleMap.setMyLocationEnabled(true);
-
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+            //Create markers for Behrend school buildings and the center of campus
             LatLng JunkerBld = new LatLng(42.12034657919094, -79.97780244960862);
             LatLng AmicBld = new LatLng(42.1172027162037, -79.97663030724632);
             LatLng OBSBld = new LatLng(42.119059255367574, -79.9873613581717);
@@ -45,6 +49,7 @@ public class MapsFragment extends Fragment {
             LatLng KochelBld = new LatLng(42.120180610165626, -79.98162257755125);
             LatLng behrend = new LatLng(42.1195, -79.9826);
 
+            //If statement to decide which marker is shown based on course location
             if(CourseDatabase.getInstance().getCourses(ListFragment.mWeekDay).get(mCourseID-1).getmLocation().contains("Nick")){
                 googleMap.addMarker(new MarkerOptions().position(NickBld).title("Nick"));
             }
@@ -64,6 +69,7 @@ public class MapsFragment extends Fragment {
                 googleMap.addMarker(new MarkerOptions().position(OBSBld).title("OBS"));
             }
 
+            //Center camera on behrend and zoom in to show most of campus
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(behrend, 16));
         }
     };

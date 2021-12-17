@@ -25,6 +25,7 @@ public class CourseDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        //Create inputs for dialog
         final EditText courseEditText = new EditText(requireActivity());
         final EditText profEditText = new EditText(requireActivity());
         final EditText startEditText = new EditText(requireActivity());
@@ -32,6 +33,7 @@ public class CourseDialogFragment extends DialogFragment {
         final EditText locEditText = new EditText(requireActivity());
         final Spinner locSpinner = new Spinner(requireActivity());
 
+        //Set input types and hints
         courseEditText.setInputType(InputType.TYPE_CLASS_TEXT);
         courseEditText.setMaxLines(1);
         courseEditText.setHint("Course Name");
@@ -48,15 +50,16 @@ public class CourseDialogFragment extends DialogFragment {
         locEditText.setInputType(InputType.TYPE_CLASS_TEXT);
         locEditText.setHint("Room Number");
 
+        //Create adapter and string array to set up spinner
         String items[] = {"Burke", "Kochel", "Junker", "OBS", "Nick", "AMIC"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), R.layout.support_simple_spinner_dropdown_item, items);
         locSpinner.setAdapter(adapter);
 
+        //Create and format layout
         LinearLayout layout = new LinearLayout(getContext());
-
         layout.setOrientation(LinearLayout.VERTICAL);
 
-
+        //Add fields to layout
         layout.addView(courseEditText);
         layout.addView(profEditText);
         layout.addView(startEditText);
@@ -64,11 +67,13 @@ public class CourseDialogFragment extends DialogFragment {
         layout.addView(locSpinner);
         layout.addView(locEditText);
 
+        //Build alert dialog
         return new AlertDialog.Builder(requireActivity())
                 .setTitle(R.string.course)
                 .setView(layout)
                 .setPositiveButton(R.string.create, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        //Get values from dialog inputs
                         String course = courseEditText.getText().toString();
                         String prof = profEditText.getText().toString();
                         String start = startEditText.getText().toString();
@@ -76,6 +81,7 @@ public class CourseDialogFragment extends DialogFragment {
                         String locNum = locEditText.getText().toString();
                         String loc = locSpinner.getSelectedItem().toString();
 
+                        //Send entered info to onCourseEntered
                         mListener.onCourseEntered(course.trim(), prof.trim(), start.trim(), end.trim(), (loc.trim() +  " " + locNum.trim()));
                     }
                 })

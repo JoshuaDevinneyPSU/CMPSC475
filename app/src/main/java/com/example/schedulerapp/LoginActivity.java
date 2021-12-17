@@ -30,25 +30,33 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Link views to the layout
         etLoginEmail = findViewById(R.id.etLoginEmail);
         etLoginPassword = findViewById(R.id.etLoginPass);
         tvRegisterHere = findViewById(R.id.tvRegisterHere);
         btnLogin = findViewById(R.id.btnLogin);
 
+        //Get instance of Firebase
         mAuth = FirebaseAuth.getInstance();
 
+        //OnClick for login
         btnLogin.setOnClickListener(view -> {
             loginUser();
         });
+
+        //OnClick for register
         tvRegisterHere.setOnClickListener(view ->{
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });
     }
 
+    //Log in a user
     private void loginUser(){
+        //Get email and password entered
         String email = etLoginEmail.getText().toString();
         String password = etLoginPassword.getText().toString();
 
+        //Check that fields aren't empty
         if (TextUtils.isEmpty(email)){
             etLoginEmail.setError("Email cannot be empty");
             etLoginEmail.requestFocus();
@@ -56,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             etLoginPassword.setError("Password cannot be empty");
             etLoginPassword.requestFocus();
         }else{
+            //Authenticate the login
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

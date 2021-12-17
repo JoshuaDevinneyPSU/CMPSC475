@@ -27,20 +27,26 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+        //Inflate fragment list onto main activity
         View rootView = inflater.inflate(R.layout.fragment_list, container, false);
 
+        //Set onClick for clicking on a course
         View.OnClickListener onClickListener = itemView -> {
           int selectedCourseId = (int) itemView.getTag();
             Log.d(TAG, "onCreateView: " + itemView.getTag());
           Bundle args = new Bundle();
+
+          //Send the course ID when clicked
           args.putInt(String.valueOf(DetailFragment.ARG_COURSE_ID), selectedCourseId);
           Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args);
         };
 
+        //Populate recycler view with the list of courses for the weekday
         mRecyclerView = rootView.findViewById(R.id.course_list);
         List<Course> courses = mCourseDb.getCourses(mWeekDay);
         mRecyclerView.setAdapter(new CourseAdapter(courses, onClickListener));
 
+        //Add dividers between courses
         DividerItemDecoration divider = new DividerItemDecoration(mRecyclerView.getContext(),
                 DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(divider);
@@ -65,6 +71,7 @@ public class ListFragment extends Fragment {
         }
         @Override
         public void onBindViewHolder(CourseHolder holder, int position) {
+            //Get course position in Recycler view list and tag ID
             Course course = mCourses.get(position);
             holder.bind(course);
             holder.itemView.setTag(course.getmId());
@@ -73,6 +80,7 @@ public class ListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+            //Get number of courses in list
             if(mCourses != null) {
                 return mCourses.size();
             }
@@ -81,12 +89,14 @@ public class ListFragment extends Fragment {
     }
 
     private static class CourseHolder extends RecyclerView.ViewHolder {
+        //Course Block textViews
         private final TextView mNameTextView;
         private final TextView mProfTextView;
         private final TextView mTimeTextView;
         private final TextView mLocTextView;
 
         public CourseHolder(LayoutInflater inflater, ViewGroup parent) {
+            //Link textViews with the view in the layout
             super(inflater.inflate(R.layout.list_item_class, parent, false));
             mNameTextView = itemView.findViewById(R.id.course_name);
             mProfTextView = itemView.findViewById(R.id.prof_name);
@@ -95,6 +105,7 @@ public class ListFragment extends Fragment {
         }
 
         public void bind(Course course) {
+            //Bind data to the textViews
             mNameTextView.setText(course.getmName());
             mProfTextView.setText(course.getmProf());
             mTimeTextView.setText(course.getmStart() + " - " + course.getmEnd());

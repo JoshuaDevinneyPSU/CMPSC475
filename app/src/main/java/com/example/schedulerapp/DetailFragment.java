@@ -20,6 +20,7 @@ public class DetailFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        //Get current course from mCourseID
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
         mCourseID = args.getInt(ARG_COURSE_ID);
@@ -28,12 +29,13 @@ public class DetailFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Get Fragment Detail layout
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
-
-
+        //If course exists
         if(mCourse != null){
 
+            //Populate textViews with course info
             TextView nameTextView = rootView.findViewById(R.id.course_name);
             nameTextView.setText(mCourse.getmName());
 
@@ -47,6 +49,7 @@ public class DetailFragment extends Fragment {
             locTextView.setText(mCourse.getmLocation());
         }
 
+        //Return view
         return rootView;
     }
 }
